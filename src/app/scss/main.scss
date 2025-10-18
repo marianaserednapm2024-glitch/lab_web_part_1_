@@ -1,19 +1,36 @@
+$container-bg: #fff;
+$shadow-dark: rgba(0, 0, 0, 0.25);
+$shadow-light: rgba(0, 0, 0, 0.12);
+$border-color: rgba(0, 0, 0, 0.05);
+$radius: 12px;
+$max-width: 1100px;
+$padding-x: 60px;
+$padding-y: 45px;
+$gap: 40px;
+
+@mixin shadow($color1, $color2) {
+  box-shadow:
+          0 30px 60px $color1,
+          0 10px 22px $color2;
+}
+
 .container {
-  background: #fff;
-  border-radius: 12px;
-  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.25),
-  0 10px 22px rgba(0, 0, 0, 0.12);
-  padding-left: 60px;
-  padding-right: 60px;
-  padding-top:  45px;
-  padding-bottom: 45px;
-  max-width: 1100px;
+  background: $container-bg;
+  border-radius: $radius;
+  @include shadow($shadow-dark, $shadow-light);
+
+  padding: $padding-y $padding-x;
+  border: 1px solid $border-color;
+  max-width: $max-width;
   width: 80%;
-  border: 1px solid rgba(0, 0, 0, 0.05);
   position: relative;
 
   display: flex;
   flex-wrap: wrap;
-  gap: 40px;
+  gap: $gap;
   justify-content: center;
+
+  > * {
+    flex: 1 1 calc(50% - $gap / 2);
+  }
 }

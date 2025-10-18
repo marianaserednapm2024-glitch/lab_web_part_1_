@@ -1,62 +1,88 @@
-.sidebar{
-  padding-left: 30px;
+$main-color: red;
+$text-color: #222;
+$accent-color: #e90000;
+$light-gray: #f0f0f0;
+$font: 'Arial', sans-serif;
+$base-padding: 15px;
+$base-size: 14px;
 
+@mixin flex-center($justify: center) {
+  display: flex;
+  align-items: center;
+  justify-content: $justify;
+}
+
+.sidebar {
+  padding-left: $base-padding * 2;
 }
 
 .photo {
-  display: flex;
-  align-items: center;
-  justify-content: left;
-}
+  @include flex-center(left);
 
-.photo img {
-  width: 100%;
-  height: auto;
-  object-fit: cover;
+  img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
 }
-
 
 .section-title {
-  display: flex;
-  align-items: center;
-  border-bottom: 2px solid #000;
-  margin-top: 30px;
-  margin-bottom: 10px;
+  font-family: $font;
+  margin: $base-padding * 2.5 0;
+
+  h2 {
+    @include flex-center(flex-start);
+    font-size: $base-size + 10px;
+    font-weight: 500;
+    color: $text-color;
+    border-bottom: 2px solid #000;
+    position: relative;
+
+    strong {
+      padding-left: 10px;
+      margin-right: 8px;
+      color: #000;
+    }
+
+    i {
+      padding-left: 8px;
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 40px;
+      height: 4px;
+      background-color: $main-color;
+    }
+  }
 }
 
-.section-title i {
-  color: black;
-  font-size: 18px;
-  margin-right: 10px;
-}
+.references {
+  .ref {
+    margin-bottom: $base-padding;
+  }
 
-.section-title h3 {
-  font-weight: 500;
-  font-size: 25px;
-  margin: 0;
-}
+  h4 {
+    margin-top: $base-padding + 5px;
+    font-size: $base-size + 2px;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
 
-.references .ref {
-  margin-bottom: 15px;
-}
+  .address {
+    color: $accent-color;
+    font-style: italic;
+    font-weight: bold;
+    margin: 3px 0;
+  }
 
-.references h4 {
-  margin-top: 20px;
-  font-size: 16px;
-  font-weight: bold;
-  text-transform: uppercase;
-}
-
-.references .address {
-  color: #e90000;
-  font-style: italic;
-  font-weight: bold;
-  margin: 3px 0;
-}
-
-.references p {
-  margin: 2px 0;
-  font-size: 14px;
+  p {
+    margin: 2px 0;
+    font-size: $base-size;
+  }
 }
 
 .skills {
@@ -65,55 +91,103 @@
 }
 
 .skill {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 15px;
-}
+  @include flex-center();
+  gap: $base-padding * 2.6;
+  margin-bottom: $base-padding;
 
-.skill label {
-  width: 130px;
-  font-weight: 700;
-  font-size: 10px;
+  label {
+    width: 175px;
+    font-weight: 700;
+    font-size: $base-size - 1px;
+  }
 }
 
 .slider {
   -webkit-appearance: none;
-  width: 100%;
+  width: 60%;
   height: 5px;
   border-radius: 0;
   outline: none;
   pointer-events: none;
+  background: linear-gradient(to right, $main-color 50%, #ddd 50%);
 
-  background: linear-gradient(to right, red 50%, #ddd 50%);
+  &::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 10px;
+    height: 10px;
+    background: $main-color;
+    border: none;
+  }
 }
 
-.slider::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  width: 10px;
-  height: 10px;
-  background: red;
-  margin-top: 0px;
-  border: none;
+.pad {
+  padding-top: 8px;
 }
 
+.pad-2 {
+  padding-top: 8px;
+}
 
+.pad-3 {
+  padding-top: 8px;
+}
 
+.progress-circle {
+  position: relative;
+  width: 120px;
+  height: 120px;
+  margin: 0 auto;
 
+  svg {
+    transform: rotate(-90deg);
+    width: 120px;
+    height: 120px;
+  }
 
+  .bg {
+    fill: $light-gray;
+  }
 
+  .track {
+    fill: none;
+    stroke-width: 7;
+  }
 
+  .progress {
+    fill: none;
+    stroke: $main-color;
+    stroke-width: 5;
+    stroke-linecap: round;
+    transition: stroke-dashoffset 1s ease;
+  }
 
+  .circle-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    font-weight: bold;
 
+    .percent {
+      font-size: 1.4rem;
+    }
 
+    .lang {
+      font-size: 0.9rem;
+    }
+  }
+}
 
+.text-base {
+  font-size: $base-size;
+  color: $text-color;
+}
 
+.references p {
+  @extend .text-base;
+}
 
-
-
-
-
-
-
-
-
+.skill label {
+  @extend .text-base;
+}
