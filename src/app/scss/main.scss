@@ -1,3 +1,4 @@
+// ---------------- ЗМІННІ ----------------
 $container-bg: #fff;
 $shadow-dark: rgba(0, 0, 0, 0.25);
 $shadow-light: rgba(0, 0, 0, 0.12);
@@ -8,17 +9,18 @@ $padding-x: 60px;
 $padding-y: 45px;
 $gap: 40px;
 
+// ---------------- МІКСИН ----------------
 @mixin shadow($color1, $color2) {
   box-shadow:
           0 30px 60px $color1,
           0 10px 22px $color2;
 }
 
+// ---------------- ОСНОВНИЙ СТИЛЬ ----------------
 .container {
   background: $container-bg;
   border-radius: $radius;
   @include shadow($shadow-dark, $shadow-light);
-
   padding: $padding-y $padding-x;
   border: 1px solid $border-color;
   max-width: $max-width;
@@ -32,5 +34,39 @@ $gap: 40px;
 
   > * {
     flex: 1 1 calc(50% - $gap / 2);
+  }
+}
+
+// ---------------- АДАПТИВНІСТЬ ----------------
+
+// планшети (до 992px)
+@media (max-width: 992px) {
+  .container {
+    width: 90%;
+    padding: $padding-y * 0.8 $padding-x * 0.7;
+    gap: $gap * 0.7;
+
+    > * {
+      flex: 1 1 100%;
+    }
+  }
+}
+
+// мобільні (до 600px)
+@media (max-width: 600px) {
+  .container {
+    width: 95%;
+    padding: $padding-y * 0.6 $padding-x * 0.5;
+    gap: $gap * 0.5;
+    border-radius: $radius * 0.7;
+    flex-direction: column;
+    box-shadow:
+            0 20px 35px $shadow-dark,
+            0 5px 15px $shadow-light;
+
+    > * {
+      flex: 1 1 100%;
+      width: 100%;
+    }
   }
 }

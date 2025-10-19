@@ -1,3 +1,4 @@
+// ---------------- ЗМІННІ ----------------
 $main-color: #d32f2f;
 $text-color: #232323;
 $bg-light: #e9e9e9;
@@ -5,6 +6,7 @@ $font-family: 'Arial', sans-serif;
 $base-gap: 20px;
 $base-font: 14px;
 
+// ---------------- МІКСИН ----------------
 @mixin box-style($bg, $pad-x, $pad-y) {
   background: $bg;
   padding: $pad-y $pad-x;
@@ -12,6 +14,7 @@ $base-font: 14px;
   border-radius: 5px;
 }
 
+// ---------------- ОСНОВНИЙ СТИЛЬ ----------------
 header {
   font-family: $font-family;
 
@@ -66,6 +69,7 @@ header {
     display: flex;
     align-items: center;
     justify-content: center;
+    text-align: center;
 
     &.full {
       width: 100%;
@@ -89,6 +93,7 @@ header {
   }
 }
 
+// ---------------- ТЕКСТ ----------------
 .text-base {
   text-align: right;
   padding-right: 22px;
@@ -125,6 +130,7 @@ header {
   font-weight: 500;
 }
 
+// ---------------- БЛОК ABOUT ----------------
 .about {
   margin-top: 30px;
 
@@ -140,4 +146,73 @@ header {
 .red {
   border-bottom: 5px solid red;
   padding-top: 10px;
+}
+
+// ---------------- АДАПТИВНІСТЬ ----------------
+
+// планшети (до 992px)
+@media (max-width: 992px) {
+  header h1 {
+    font-size: $base-font * 3;
+  }
+
+  header h2 {
+    font-size: $base-font + 3px;
+  }
+
+  .info .info-row {
+    flex-direction: column;
+  }
+
+  .info .info-box {
+    flex: none;
+    width: 100%;
+  }
+
+  .text-base {
+    text-align: center;
+    padding-right: 0;
+  }
+}
+
+// мобільні пристрої (до 600px)
+@media (max-width: 600px) {
+  header h1 {
+    font-size: $base-font * 2.5;
+  }
+
+  header h2 {
+    font-size: $base-font + 2px;
+    letter-spacing: 1px;
+  }
+
+  .info {
+    gap: 15px;
+  }
+
+  .info .info-row {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .info .info-box {
+    padding: 10px;
+    font-size: $base-font - 2px;
+  }
+
+  .text-3 {
+    font-size: $base-font + 3px;
+  }
+
+  .about p {
+    font-size: $base-font - 2px;
+  }
+
+  .name-line {
+    flex-direction: column;
+
+    .line {
+      width: 100%;
+    }
+  }
 }

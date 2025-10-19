@@ -1,3 +1,4 @@
+// ---------------- ЗМІННІ ----------------
 $main-color: red;
 $text-color: #222;
 $accent-color: #e90000;
@@ -6,12 +7,14 @@ $font: 'Arial', sans-serif;
 $base-padding: 15px;
 $base-size: 14px;
 
+// ---------------- МІКСИНИ ----------------
 @mixin flex-center($justify: center) {
   display: flex;
   align-items: center;
   justify-content: $justify;
 }
 
+// ---------------- ОСНОВНИЙ СТИЛЬ ----------------
 .sidebar {
   padding-left: $base-padding * 2;
 }
@@ -120,14 +123,8 @@ $base-size: 14px;
   }
 }
 
-.pad {
-  padding-top: 8px;
-}
-
-.pad-2 {
-  padding-top: 8px;
-}
-
+.pad,
+.pad-2,
 .pad-3 {
   padding-top: 8px;
 }
@@ -190,4 +187,116 @@ $base-size: 14px;
 
 .skill label {
   @extend .text-base;
+}
+
+// ---------------- АДАПТИВНІСТЬ ----------------
+
+// планшети
+@media (max-width: 992px) {
+  .sidebar {
+    padding-left: $base-padding;
+  }
+
+  .section-title h2 {
+    font-size: $base-size + 6px;
+  }
+
+  .skill {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: $base-padding;
+  }
+
+  .skill label {
+    width: auto;
+  }
+
+  .slider {
+    width: 100%;
+  }
+
+  .progress-circle {
+    width: 100px;
+    height: 100px;
+
+    svg {
+      width: 100px;
+      height: 100px;
+    }
+
+    .circle-content .percent {
+      font-size: 1.2rem;
+    }
+  }
+}
+
+// мобільні
+@media (max-width: 600px) {
+  .photo {
+    justify-content: center;
+
+    img {
+      width: 100%;
+      height: auto;
+    }
+  }
+
+  .section-title {
+    margin: $base-padding * 1.5 0;
+
+    h2 {
+      font-size: $base-size + 4px;
+      text-align: center;
+      justify-content: center;
+
+      strong {
+        padding-left: 5px;
+        margin-right: 5px;
+      }
+
+      &::after {
+        left: 50%;
+        transform: translateX(-50%);
+        width: 30px;
+      }
+    }
+  }
+
+  .references h4 {
+    font-size: $base-size + 1px;
+    text-align: center;
+  }
+
+  .references p {
+    text-align: center;
+  }
+
+  .skills {
+    max-width: 100%;
+    margin: 20px auto;
+  }
+
+  .skill {
+    flex-direction: column;
+    gap: 8px;
+    align-items: center;
+  }
+
+  .progress-circle {
+    width: 90px;
+    height: 90px;
+
+    svg {
+      width: 90px;
+      height: 90px;
+    }
+
+    .circle-content .percent {
+      font-size: 1rem;
+    }
+
+    .circle-content .lang {
+      font-size: 0.8rem;
+    }
+  }
 }
