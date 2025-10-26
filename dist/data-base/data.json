@@ -1,0 +1,23 @@
+{
+  "firstName": "KEVIN C.",
+  "lastName": "SILVA",
+  "skills": [
+    { "name": "Adobe Photoshop", "value": 85 },
+    { "name": "Adobe Illustrator", "value": 75 },
+    { "name": "Microsoft Word", "value": 90 },
+    { "name": "Microsoft PowerPoint", "value": 80 },
+    { "name": "HTML-5/CSS-3", "value": 95 }
+  ],
+  "hobbies": [
+    { "name": "Book Reading", "value": 70 },
+    { "name": "Travelling", "value": 85 },
+    { "name": "Playing Chess", "value": 60 },
+    { "name": "Painting", "value": 75 },
+    { "name": "Graphic Design", "value": 80 }
+  ],
+  "languages": [
+    { "name": "ENGLISH", "value": 95 },
+    { "name": "GERMAN", "value": 60 },
+    { "name": "SPANISH", "value": 45 }
+  ]
+}

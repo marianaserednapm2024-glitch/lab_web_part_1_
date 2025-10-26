@@ -60,6 +60,12 @@ const img_task = () => {
         .pipe(browserSync.stream());
 };
 
+const json_task = () => {
+    return src(['src/data-base/**/*.json'])
+        .pipe(dest('dist/data-base'))
+        .pipe(browserSync.stream());
+}
+
 // --- BrowserSync та Watch ---
 const serve = () => {
     browserSync.init({
@@ -72,10 +78,11 @@ const serve = () => {
     watch('src/app/**/*.scss', scss_task);
     watch('src/app/js/**/*.js', js_task);
     watch('src/app/img/**/*', img_task);
+    watch('src/data-base//**/*', json_task);
 };
 
 // --- Default таска ---
 exports.default = series(
-    parallel(html_task, scss_task, js_task, img_task, bootstrapCSS, bootstrapJS),
+    parallel(html_task, scss_task, js_task, img_task,json_task, bootstrapCSS, bootstrapJS),
     serve
 );
